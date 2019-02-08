@@ -3,6 +3,7 @@ import {connect} from 'react-redux';
 import {updateUser} from './../../ducks/reducer';
 import axios from 'axios';
 import {withRouter} from 'react-router-dom';
+import {Link} from 'react-router-dom';
 
 class Nav extends React.Component {
     constructor(props){
@@ -23,20 +24,25 @@ class Nav extends React.Component {
         });
     }
     render(){
+        console.log(this.props.username)
         return (
             <div>
              <div>
                  <div>
-                     Picture
+                     <img src={this.props.profile_pic} alt='Profile'/>
                  </div>
                  <div>
-                     Name
+                     {this.props.username}
                  </div>
                  <div>
-                     Home
+                     <Link to='/dashboard'>
+                        Home
+                     </Link>
                  </div>
                  <div>
-                     new
+                     <Link to='/new'>
+                        new
+                     </Link>
                  </div>
              </div>
              <div>
@@ -53,6 +59,7 @@ const mapToProps = reduxState=>{
     const {
         id, username, profile_pic
     } = reduxState;
+    console.log({username})
     return {
         id, username, profile_pic
     }
