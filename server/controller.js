@@ -54,5 +54,9 @@ module.exports ={
         }else{
             res.sendStatus(401);
         };
+    },
+    postPost: (req, res)=>{
+        const {title, img, content} = req.body;
+        console.log({title}, {img}, {content});
     }
 }

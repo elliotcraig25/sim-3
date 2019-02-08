@@ -59,7 +59,7 @@ const mapToProps = reduxState=>{
     const {
         id, username, profile_pic
     } = reduxState;
-    console.log({username})
+    // console.log({username})
     return {
         id, username, profile_pic
     }
