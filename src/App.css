@@ -30,3 +30,25 @@
     transform: rotate(360deg);
   }
 }
+
+.parent_app {
+  display: flex;
+  flex-direction: row;
+  height: 100vh;
+  width: 100%;
+  border: solid black 1px; 
+}
+
+.parent_body {
+  width: calc(100% - 100px);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.navbar {
+  background-color: #61dafb;
+  width: 100px;
+  height: 100%;
+}
