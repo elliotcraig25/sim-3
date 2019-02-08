@@ -1,6 +1,8 @@
 import React, {Component} from 'react';
 import './Login.css';
 import axios from 'axios';
+import {connect} from 'react-redux';
+import {updateUser} from './../../ducks/reducer';
 
 
 class Login extends Component {
@@ -21,15 +23,20 @@ class Login extends Component {
         const {username, password} = this.state;
         axios.post(
             `/auth/register`, {username, password}
-        )
+        ).then(res=>{
+            console.log(res.data)
+            this.props.updateUser(res.data)
+        }).catch(err=>{
+            console.log(err);
+        });
     };
     login(){
 
     }
     render(){
         const {username, password} = this.state;
-        console.log({username})
-        console.log({password})
+        // console.log({username})
+        // console.log({password})
         return(
             <div className='login'>
                 <div>
@@ -71,5 +78,13 @@ class Login extends Component {
             </div>
         )
     }
+};
+const mapToProps = reduxState => {
+    return {
+        id: reduxState.id
+    }
+};
+const dispatch = {
+    updateUser
 }
-export default Login
+export default connect(mapToProps, dispatch)(Login)

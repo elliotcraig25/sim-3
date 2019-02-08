@@ -1,7 +1,7 @@
-insert into users (
+insert into sim_users (
     username,
-    password,
+    password
 ) values (
     ${user},
-    ${pass},
-) returning username, profile_pic, id, balance;
+    ${pass}
+) returning username, id;
