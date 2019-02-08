@@ -13,6 +13,21 @@ class Login extends Component {
             password: ''
         };
         this.login = this.login.bind(this);
+    };
+    componentDidMount(){
+        // console.log(this.props.history)
+        const {id} = this.props;
+        if(id){
+            this.props.history.push('/dashboard')
+        }else{
+            axios.get('/api/user')
+            .then(res=>{
+                this.props.updateUser(res.data)
+                this.props.history.push('/dashboard')
+            }).catch(err=>{
+                console.log(err)
+            });
+        }
     }
     handleChange(prop, val){
         this.setState({
@@ -26,15 +41,24 @@ class Login extends Component {
         ).then(res=>{
             console.log(res.data)
             this.props.updateUser(res.data)
+            this.props.history.push('/dashboard')
         }).catch(err=>{
             console.log(err);
         });
     };
     login(){
-
+        const {username, password} = this.state;
+        axios.post(`/auth/login`, {username, password})
+        .then(res=>{
+            this.props.updateUser(res.data);
+            this.props.history.push('/dashboard')
+        }).catch(err=>{
+            console.log(err);
+        });
     }
     render(){
         const {username, password} = this.state;
+        console.log()
         // console.log({username})
         // console.log({password})
         return(

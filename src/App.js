@@ -11,17 +11,19 @@ class App extends Component {
   render() {
     return (
         <Provider store={store}>
-          <div className='parent_app'>
-            <div className='navbar'>
-              <Nav />
-            </div>
-            <div className='parent_body'>
-              {/* <div> */}
-                <Router>
-                  {routes}
-                </Router>
-              {/* </div> */}
-            </div>
+          <div>
+            <Router>
+              <div className='parent_app'>
+                <div className='navbar'>
+                  <Nav />
+                </div>
+                <div className='parent_body'>
+                  {/* <div> */}
+                      {routes}
+                  {/* </div> */}
+                </div>
+              </div>
+            </Router>
           </div>
         </Provider>
     );
